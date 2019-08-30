@@ -20,11 +20,13 @@ class RouteProjects extends Component {
       ]
     }
   }
-
-  componentDidMount(){
-    getProjects().then(res => {
+  routeGetProjects = () => {
+     getProjects().then(res => {
       this.setState({projects:res.data})
     })
+  }
+  componentDidMount(){
+   this.routeGetProjects();
   }
   render(){
     return (
@@ -36,6 +38,7 @@ class RouteProjects extends Component {
             var projectProps = {
               ...project,
               key: project.id,
+              refreshData:this.routeGetProjects
     
             };
             return (<Project {...projectProps} />)
