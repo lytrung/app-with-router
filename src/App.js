@@ -26,7 +26,7 @@ class App extends Component {
   handleLogoutClick = () => {
     localStorage.removeItem('userId')
     this.setState({currentUser:null})
-    navigate('login')
+    navigate('/login')
   }
   componentDidMount(){
     getTypes().then(res => this.setState({types:res.data}))

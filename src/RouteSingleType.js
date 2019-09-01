@@ -19,14 +19,22 @@ class RouteSingleType extends Component {
     var {id} = this.props
     this.routeGetType(id)
   }
-  shouldComponentUpdate(nextProps, nextState){
+  // shouldComponentUpdate(nextProps, nextState){
+  //   var {id} = this.props
+  //   if(id != nextProps.id){
+
+  //     this.routeGetType(nextProps.id)
+
+  //   }
+  //   return true
+  // }
+
+  componentDidUpdate(prevProps, prevState){
     var {id} = this.props
-    if(id != nextProps.id){
 
-      this.routeGetType(nextProps.id)
-
+    if(id != prevProps.id){
+      this.routeGetType(id)
     }
-    return true
   }
 
   render(){
