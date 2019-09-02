@@ -57,6 +57,11 @@ body{
   margin-right:1em;
 }
 
+/*reviews*/
+.review{
+  margin-bottom:1em;
+}
+
 /* Color Theme Swatches in RGBA */
 .color0{ background-color: rgba(200, 200, 200, 1); }
 .color1{ background-color: rgba(201, 255, 245, 1); }

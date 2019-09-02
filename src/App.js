@@ -6,6 +6,8 @@ import RouteProjects from './RouteProjects';
 import RouteAddProject from './RouteAddProject';
 import RouteEditProject from './RouteEditProject';
 import RouteSingleType from './RouteSingleType';
+import RouteSingleProject from './RouteSingleProject';
+import RouteAddUser from './RouteAddUser';
 import RouteLogin from './RouteLogin';
 import RouteNotFound from './RouteNotFound';
 
@@ -63,7 +65,7 @@ class App extends Component {
                 ) : (
                   <>
                   <Link to="/login">Login</Link>
-                  <li><a href="">Signup</a></li>
+                  <Link to="/users/create">Register</Link>
                   </>
                 )
               }
@@ -72,10 +74,12 @@ class App extends Component {
           </div>
 
           <Router>
-            <RouteProjects path="/projects" />
-            <RouteSingleType path="/types/:id" />
-            {currentUser ? <RouteAddProject path="/projects/create" /> : null}
+            <RouteProjects currentUser={this.state.currentUser} path="/projects" />
+            <RouteSingleType currentUser={this.state.currentUser} path="/types/:id" />
+            {currentUser ? <RouteAddProject currentUser={this.state.currentUser} path="/projects/create" /> : null}
             {currentUser ? <RouteEditProject path="/projects/:id/edit" /> : null}
+            <RouteSingleProject currentUser={this.state.currentUser} path="/projects/:id" />
+            <RouteAddUser path="/users/create" />
             <RouteLogin setCurrentUser={this.setCurrentUser} path="/login" />
             
             <RouteNotFound default />

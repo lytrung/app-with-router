@@ -38,7 +38,8 @@ class RouteProjects extends Component {
             var projectProps = {
               ...project,
               key: project.id,
-              refreshData:this.routeGetProjects
+              refreshData:this.routeGetProjects,
+              currentUser: this.props.currentUser
     
             };
             return (<Project {...projectProps} />)

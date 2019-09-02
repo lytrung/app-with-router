@@ -48,7 +48,8 @@ class RouteSingleType extends Component {
             var projectProps = {
               ...project,
               key: project.id,
-              refreshData: () => this.routeGetType(type.id)
+              refreshData: () => this.routeGetType(type.id),
+              currentUser: this.props.currentUser
     
             };
             return (<Project {...projectProps} />)

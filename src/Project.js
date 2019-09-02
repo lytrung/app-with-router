@@ -12,7 +12,7 @@ class  Project extends Component {
 
   	render(){
 
-	  	var {name,description,id} = this.props
+	  	var {name,description,id,user_id, currentUser} = this.props
 
 	    return (
 	      <div className="card project">
@@ -22,8 +22,15 @@ class  Project extends Component {
 	          <p className="card-text">{description}</p>
 	          <p>
 	            <i className="fas fa-heart"></i>
-	            <Link to={'/projects/'+id+'/edit'}><i className="fas fa-edit"></i></Link>
-	            <i onClick={this.handleTrashClick} className="fas fa-trash"></i>
+	            { (currentUser && currentUser.id == user_id)? (
+					
+					<>
+	            	<Link to={'/projects/'+id+'/edit'}><i className="fas fa-edit"></i></Link>
+	            	<i onClick={this.handleTrashClick} className="fas fa-trash"></i>
+					</>
+
+	            ) : null}
+	            
 	          </p>
 	        </div>
 	      </div>

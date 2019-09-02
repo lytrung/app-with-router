@@ -9,10 +9,13 @@ class RouteAddProject extends Component {
 
     var formData = new FormData(this.form);
 
+    var {currentUser} = this.props;
+
     var data = {
       name:formData.get('name-input'),
       description:formData.get('description-input'),
-      type_id:formData.get('type-input')
+      type_id:formData.get('type-input'),
+      user_id: currentUser.id
     }
 
     addProjects(data).then(res => navigate('/projects'))
