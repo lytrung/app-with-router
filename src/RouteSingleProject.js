@@ -34,18 +34,17 @@ class RouteSingleProject extends Component {
 
     var formData = new FormData(this.reviewForm);
 
-    var project_id = this.props.id;
+    var projectId = this.props.id;
 
     var data = {
       comment:formData.get('comment-input'),
       rating:formData.get('rating-input'),
-      project_id: project_id,
+      project_id: projectId,
       user_id: this.props.currentUser.id
     }
-    addReviews(data).then(res => this.routeGetProject(project_id))
+    addReviews(data).then(res => this.routeGetProject(projectId))
   }
 
-  handleTrashClick = () => {}
 
   render(){
     var {project} = this.state
@@ -59,18 +58,7 @@ class RouteSingleProject extends Component {
           <div className="card-body">
             <p className="card-text">{project.description}</p>
             <p className="card-text">Created by: {project.user ? project.user.name : 'anonymous'}</p>
-            <p>
-              <i className="fas fa-heart"></i>
-              { (currentUser && currentUser.id == project.user_id)? (
-          
-                <>
-                <Link to={'/projects/'+project.id+'/edit'}><i className="fas fa-edit"></i></Link>
-                <i onClick={this.handleTrashClick} className="fas fa-trash"></i>
-                </>
-
-              ) : null}
-              
-            </p>
+            
           </div>
         </div>
 
@@ -78,7 +66,8 @@ class RouteSingleProject extends Component {
           project.reviews.map(review => {
             var reviewProps = {
               review:review,
-              currentUser:currentUser
+              currentUser:currentUser,
+              refreshData: () => this.routeGetProject(project.id)
             }
             return <Review {...reviewProps} />
           })

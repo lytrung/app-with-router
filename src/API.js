@@ -36,6 +36,11 @@ var addReviews = (data) => {
     return axios.post(urlPrefix+'/reviews',data)
 }
 
+var deleteReviews = (id) => {
+    return axios.delete(urlPrefix+'/reviews/'+id)
+
+}
+
 var  authenticate = (data) => {
     return axios.post(urlPrefix+'/authenticate',data)          
 }
@@ -48,7 +53,7 @@ var  getSingleUser = (id) => {
     return axios.get(urlPrefix+'/users/'+id)
 }
 
-export {serverUrl,getProjects,getSingleProject, getTypes, addProjects,updateProjects,deleteProjects, getSingleType,authenticate,getSingleUser,addUsers,addReviews}
+export {serverUrl,getProjects,getSingleProject, getTypes, addProjects,updateProjects,deleteProjects, getSingleType,authenticate,getSingleUser,addUsers,addReviews,deleteReviews}
 
 
 
