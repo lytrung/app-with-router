@@ -21,14 +21,6 @@ class RouteSingleProject extends Component {
     this.routeGetProject(id)
   }
 
-  // componentDidUpdate(prevProps, prevState){
-  //   var {id} = this.props
-
-  //   if(id != prevProps.id){
-  //     this.routeGetType(id)
-  //   }
-  // }
-
   handleReviewFormSubmit = (e) => {
     e.preventDefault();
 
@@ -42,7 +34,10 @@ class RouteSingleProject extends Component {
       project_id: projectId,
       user_id: this.props.currentUser.id
     }
-    addReviews(data).then(res => this.routeGetProject(projectId))
+    addReviews(data).then(res => {
+      this.reviewForm.reset()
+      this.routeGetProject(projectId)
+    })
   }
 
 
