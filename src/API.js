@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-var urlPrefix = 'http://localhost:3001/api'
-var serverUrl = 'http://localhost:3001/'
+var urlPrefix = 'http://10.2.24.47:3001/api'
+var serverUrl = 'http://10.2.24.47:3001/'
 
 var getProjects = () => {
     return axios.get(urlPrefix+'/projects')
